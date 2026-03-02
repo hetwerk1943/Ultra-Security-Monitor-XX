@@ -1,193 +1,221 @@
 🛡️ Ultra Security Monitor X – Total Security & RTT Shield
 
-Ultra Security Monitor X to profesjonalny system monitorowania i ochrony Windows 10/11 (64-bit) w czasie rzeczywistym. Łączy funkcjonalność EDR, IDS, backupu, Ransomware Protection oraz ochrony prywatności dzięki RTT Shield – warstwie ochrony przed fingerprintingiem timingowym i analizą metadanych sieciowych.
+Ultra Security Monitor X to profesjonalny, wielowarstwowy system ochrony dla Windows 10/11 (64-bit), zaprojektowany jako lekka, ale potężna platforma bezpieczeństwa klasy EDR + IDS + Ransomware Protection + Privacy Shield.
 
-Projekt został zaprojektowany tak, aby chronić użytkownika przed złośliwym oprogramowaniem, ransomware, keyloggerami, rootkitami i podejrzanymi połączeniami sieciowymi, bez ingerencji w normalną pracę systemu.
+Łączy monitorowanie w czasie rzeczywistym, automatyczne reakcje obronne oraz zaawansowaną ochronę prywatności dzięki unikalnej warstwie RTT Shield, która ogranicza fingerprinting timingowy i analizę metadanych sieciowych.
 
-📌 Najważniejsze funkcje
-1️⃣ Monitorowanie procesów
+Projekt został stworzony tak, aby:
 
-Rejestracja wszystkich procesów w systemie w czasie rzeczywistym (WMI Win32_ProcessStartTrace)
+chronić użytkownika bez ingerencji w codzienną pracę,
 
-Weryfikacja podpisu cyfrowego plików wykonywalnych (Get-AuthenticodeSignature)
+zapewnić pełną widoczność zdarzeń bezpieczeństwa,
 
-Obliczanie skrótu SHA-256 i automatyczna analiza w VirusTotal (jeżeli API skonfigurowane)
+umożliwić integrację z systemami SIEM,
 
-Raportowanie podejrzanych procesów do logów, SIEM JSON, alertów Discord/E-mail
+automatycznie reagować na zagrożenia.
 
-2️⃣ Monitoring sieci
+🔍 Główne Moduły Systemu
+1️⃣ Monitoring procesów (EDR Engine)
+
+Rejestrowanie procesów w czasie rzeczywistym (WMI Win32_ProcessStartTrace)
+
+Weryfikacja podpisów cyfrowych (Get-AuthenticodeSignature)
+
+Generowanie hashy SHA-256
+
+Integracja z VirusTotal API v3
+
+Wykrywanie:
+
+unsigned executables
+
+nietypowych parent-child chains
+
+procesów z katalogów użytkownika
+
+Logowanie do:
+
+security.log
+
+security-report.txt
+
+SIEM/siem.json
+
+Alerty: Discord / SMTP / lokalne powiadomienia
+
+2️⃣ Monitoring sieci (Network IDS)
 
 Analiza połączeń TCP/UDP inicjowanych przez procesy
 
-Wykrywanie nietypowych hostów, portów i połączeń wychodzących
+Wykrywanie:
 
-Tworzenie logów i raportów w formacie przyjaznym dla SIEM (Splunk, ELK, Graylog)
+nietypowych portów
 
-3️⃣ Monitoring plików i folderów
+podejrzanych domen/IP
 
-Śledzenie folderów System32, Program Files, Dokumenty, Desktop
+beaconingu C2
 
-Zdarzenia: utworzenie, zmiana, zmiana nazwy plików
+Eksport zdarzeń do SIEM (NDJSON)
 
-Automatyczne backupy każdej zmienionej lub nowo utworzonej wersji pliku
+Mapowanie procesu ↔ połączenie sieciowe
 
-Analiza podpisów cyfrowych i hashów plików w celu wykrycia malware
+3️⃣ Monitoring plików (File Integrity Monitoring)
+
+Śledzone foldery:
+
+System32
+
+Program Files
+
+Documents
+
+Desktop
+
+Wykrywane zdarzenia:
+
+utworzenie pliku
+
+modyfikacja
+
+zmiana nazwy
+
+masowe zmiany (ransomware detection)
+
+Funkcje:
+
+automatyczny backup wersji pliku
+
+analiza hash
+
+kontrola podpisu cyfrowego
+
+kwarantanna podejrzanych plików
 
 4️⃣ Monitoring rejestru
 
-Śledzenie kluczy autostartu, usług systemowych i konfiguracji krytycznych dla systemu
+Śledzone:
 
-Wykrywanie złośliwych zmian rejestru
+klucze autostartu
+
+konfiguracje usług
+
+krytyczne wpisy systemowe
+
+Wykrywanie:
+
+persistence malware
+
+manipulacji startem systemu
+
+zmian eskalujących uprawnienia
 
 5️⃣ Monitoring kont użytkowników
 
-Śledzenie logowań lokalnych i domenowych
+Rejestrowanie logowań lokalnych i domenowych
 
-Tworzenie i modyfikacja kont
+Tworzenie / modyfikacja kont
 
-Wykrywanie nietypowej aktywności administratorów lub nowo utworzonych kont
+Detekcja:
 
-6️⃣ RTT Shield – Ochrona prywatności
+nowych administratorów
 
-Entropy Injection – losowe opóźnienia w odpowiedziach transportowych
+nietypowych aktywności uprzywilejowanych
 
-Probe Detection – wykrywanie sond i nietypowych handshake’ów
+🧠 RTT Shield – Warstwa Ochrony Prywatności
 
-Network Smoothing – maskowanie zmian interfejsów sieciowych
+Unikalny moduł redukujący fingerprinting timingowy i RTT tracking.
 
-Wake State Normalization – wyrównanie czasu odpowiedzi po uśpieniu lub przebudzeniu systemu
+Mechanizmy:
 
-Tryby: Standard | Enhanced | High Risk
+Entropy Injection – losowe opóźnienia transportowe
 
-7️⃣ Automatyczna reakcja i sandboxing
+Probe Detection – wykrywanie nietypowych handshake’ów
 
-Blokowanie podejrzanych procesów lub połączeń
+Network Smoothing – maskowanie zmian interfejsu
 
-Przenoszenie plików do kwarantanny (folder Backup)
+Wake State Normalization – wyrównanie czasu odpowiedzi po wybudzeniu
 
-Symulacja podejrzanych plików w izolowanym środowisku (sandbox)
+Tryby pracy:
 
-Wykrywanie ransomware i masowych zmian plików z automatycznym backupem
+Standard
 
-8️⃣ Alerty i powiadomienia
+Enhanced
 
-Discord Webhook – natychmiastowe powiadomienia
+High Risk
 
-E-mail – alerty SMTP z SSL
+🚨 Automatyczna Reakcja
 
-Dźwiękowe powiadomienia przy krytycznych zdarzeniach
+System może:
 
-9️⃣ Raporty i dashboard
+blokować podejrzane procesy
 
-Logi zdarzeń w formacie TSV (security.log)
+przerywać połączenia sieciowe
 
-Raporty podejrzanych procesów (security-report.txt)
+przenosić pliki do kwarantanny
 
-Dashboard HTML/JS (dashboard.html) do wizualizacji trendów alertów i zdarzeń SIEM
+wykrywać ransomware przez analizę masowych zmian
 
-Historia zdarzeń z możliwością filtrowania według ważności
+wykonywać automatyczny backup krytycznych plików
 
-🔟 Integracja SIEM i VirusTotal
+uruchamiać sandbox testowy
 
-Każde zdarzenie zapisane w SIEM/NDJSON (SIEM/siem.json) – kompatybilne z Splunk, ELK, Graylog
+📊 Alerty i Dashboard
+Alerty:
 
-Automatyczne sprawdzanie hashów SHA-256 w VirusTotal API v3
+Discord Webhook
 
-Wyniki detekcji dodawane do logów i alertów
+SMTP SSL
 
-⚙️ Wymagania systemowe
+Powiadomienia dźwiękowe
 
-System operacyjny: Windows 10 / 11 (64-bit)
+Raporty:
 
-PowerShell: wersja ≥ 5.1
+security.log (TSV)
 
-Uprawnienia: konto Administratora
+security-report.txt
 
-Połączenie internetowe: opcjonalnie (Discord, VirusTotal)
+SIEM/siem.json
 
-Przeglądarka: dowolna nowoczesna (do dashboard.html)
+Dashboard:
 
-🧩 Struktura repozytorium
-UltraSecurityMonitor.ps1
-masterAgent.ps1
-Audit-Project.ps1
 dashboard.html
-agent.html
-package.json
-RTT-Shield/
-  ├─ RTTShield.ps1
-  ├─ EntropyEngine.ps1
-  ├─ ProbeDetection.ps1
-  ├─ NetworkSmoothing.ps1
-  └─ README.md
-SIEM/
-Backup/
-README.md
-SECURITY.md
-LICENSE
-🔧 Konfiguracja
-# Discord webhook (opcjonalnie)
-$DiscordWebhookUrl = "https://discord.com/api/webhooks/..."
 
-# VirusTotal API (opcjonalnie)
-$VirusTotalApiKey = "twój-klucz-api"
+Filtrowanie według ważności
 
-# E-mail alerty
-$EmailAlerts  = $true
-$SmtpServer   = "smtp.twojadomena.pl"
-$SmtpFrom     = "monitor@twojadomena.pl"
-$SmtpTo       = "ty@twojadomena.pl"
-$SmtpUseSsl   = $true
-$SmtpPort     = 587
+Trendy alertów
 
-# Foldery do monitorowania
-$MonitoredFolders = @(
-    "$env:windir\System32",
-    "$env:USERPROFILE\Documents",
-    "$env:USERPROFILE\Desktop"
-)
+Wizualizacja zdarzeń SIEM
 
-Opcjonalna whitelist (zaufane foldery):
+🔗 Integracja SIEM & DevOps
 
-[
-  "C:\\Windows\\*",
-  "C:\\Program Files\\*",
-  "C:\\Program Files (x86)\\*"
-]
-🚀 Uruchomienie
-Ręczne:
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-cd "C:\Users\<TwojaNazwa>\Documents\SecurityMonitor"
-.\UltraSecurityMonitor.ps1
-Automatyczny start przy logowaniu:
-$ScriptPath = "$env:USERPROFILE\Documents\SecurityMonitor\UltraSecurityMonitor.ps1"
-$action     = New-ScheduledTaskAction -Execute "powershell.exe" `
-                  -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$ScriptPath`""
-$trigger    = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME
-Register-ScheduledTask -Action $action -Trigger $trigger `
-    -TaskName "UltraSecurityMonitor" -RunLevel Highest -Force
-🛡️ Bezpieczeństwo i prywatność
+Kompatybilność z:
 
-RTT Shield chroni przed RTT Trackingiem i timing fingerprintingiem
+Splunk
 
-Wszystkie logi i alerty przechowywane lokalnie lub wysyłane przez zabezpieczone kanały
+ELK
 
-Brak przesyłania danych użytkownika do zewnętrznych serwerów bez zgody (poza VirusTotal / Discord jeśli skonfigurowane)
+Graylog
 
-💻 Workflow GitHub (CI/CD)
+NDJSON export
 
-NodeJS 22.x + Webpack build
+NodeJS 22.x build
 
-Datadog Synthetic tests (wymagają API Key/APP Key)
+Docker CI
 
-Docker Image CI
+Webpack
 
-Jekyll site CI
+Datadog Synthetic
 
-One-shot master-ready workflow zapewnia stabilność buildów, testów i release’ów.
+Jekyll CI
 
-📄 Licencja
+⚙️ Wymagania Systemowe
 
-MIT License – 2026 LifeHub Team
+Windows 10 / 11 (64-bit)
 
-Pozwala na użycie, kopiowanie, modyfikację i dystrybucję, z zachowaniem copyright i licencji.
+PowerShell ≥ 5.1
+
+Konto Administratora
+
+Internet (opcjonalnie – VT/Discord)
+
+Nowoczesna przeglądarka (dashboard)
