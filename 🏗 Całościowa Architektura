@@ -1,0 +1,13 @@
+ościowa Architektura
+
+Ultra Security Monitor X składa się z pięciu głównych warstw:
+
+Monitoring Layer (OS Hooks)
+
+Analysis Layer (Hash + Signature + Heuristics)
+
+Privacy Layer (RTT Shield)
+
+Response Layer (Block / Quarantine / Backup)
+
+Integration Layer (SIEM + CI/CD + Dashboard)
