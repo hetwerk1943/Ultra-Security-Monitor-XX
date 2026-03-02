@@ -1,0 +1,14 @@
+
+Security Event Stream (NDJSON)
+
+Strumień zdarzeń kompatybilny z:
+
+Splunk
+
+ELK Stack
+
+Graylog
+
+Custom SIEM
+
+Każda linia to oddzielne zdarzenie w formacie JSON.
