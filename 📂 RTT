@@ -1,0 +1,25 @@
+-Shield/RTTShield.ps1
+
+Privacy & Anti-Fingerprinting Layer
+
+Zaawansowany moduł ochrony prywatności.
+
+Chroni przed:
+
+RTT trackingiem
+
+Timing fingerprintingiem
+
+Analizą handshake’ów sieciowych
+
+Profilowaniem zmian interfejsów sieciowych
+
+Wprowadza kontrolowaną entropię w odpowiedziach systemu, utrudniając analizę czasu reakcji.
+
+Tryby pracy:
+
+Standard
+
+Enhanced
+
+High Risk
